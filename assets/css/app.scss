@@ -48,10 +48,11 @@
     --space-lg: 1.5rem;
     --space-xl: 2rem;
     --space-2xl: 3rem;
-}
 
-body {
-    margin: 0;
+    /* Section rhythm */
+    --section-padding-y: var(--space-xl);
+    --section-padding-x: 0;
+    --section-gap: var(--space-2xl);
 }
 
 /* Alerts and form errors */
@@ -175,6 +176,7 @@ blockquote {
 
 /* Basic CSS */
 body {
+    margin: 0;
     background-color: var(--bg-color);
     color: var(--font-color);
     font-family: var(--font-family-base);
@@ -200,7 +202,8 @@ p, ul, ol { font-size: var(--font-size-base); margin: 0 0 var(--space-md); }
 small { font-size: var(--font-size-sm); }
 
 section {
-    padding: var(--space-xl) 0;
+    padding: var(--section-padding-y) var(--section-padding-x);
+    margin-bottom: var(--section-gap);
 }
 
 .hover_warn:hover {
@@ -243,7 +246,7 @@ section {
 
 .features-header {
     text-align: center;
-    margin: var(--space-2xl);
+    margin: var(--section-gap) auto;
 }
 
 .highlight-button {
@@ -308,6 +311,7 @@ iframe {
 .gap-md { gap: var(--space-md); }
 .gap-lg { gap: var(--space-lg); }
 .gap-xl { gap: var(--space-xl); }
+.gap-2xl { gap: var(--space-2xl); }
 
 .mt-xs { margin-top: var(--space-xs); }
 .mt-sm { margin-top: var(--space-sm); }
@@ -321,6 +325,14 @@ iframe {
 .mb-lg { margin-bottom: var(--space-lg); }
 .mb-xl { margin-bottom: var(--space-xl); }
 
+.my-sm { margin-top: var(--space-sm); margin-bottom: var(--space-sm); }
+.my-md { margin-top: var(--space-md); margin-bottom: var(--space-md); }
+.my-lg { margin-top: var(--space-lg); margin-bottom: var(--space-lg); }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.mx-md { margin-left: var(--space-md); margin-right: var(--space-md); }
+.mx-lg { margin-left: var(--space-lg); margin-right: var(--space-lg); }
+.mx-xl { margin-left: var(--space-xl); margin-right: var(--space-xl); }
+
 .pt-sm { padding-top: var(--space-sm); }
 .pt-md { padding-top: var(--space-md); }
 .pt-lg { padding-top: var(--space-lg); }
@@ -333,6 +345,11 @@ iframe {
 
 .px-md { padding-left: var(--space-md); padding-right: var(--space-md); }
 .px-lg { padding-left: var(--space-lg); padding-right: var(--space-lg); }
+
+.p-sm { padding: var(--space-sm); }
+.p-md { padding: var(--space-md); }
+.p-lg { padding: var(--space-lg); }
+.p-xl { padding: var(--space-xl); }
 
 .py-md { padding-top: var(--space-md); padding-bottom: var(--space-md); }
 .py-lg { padding-top: var(--space-lg); padding-bottom: var(--space-lg); }

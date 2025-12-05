@@ -2,20 +2,20 @@
     position: fixed;
     bottom: 0;
     right: 0;
-    background: var(--bg-highlight-color);
+    background: var(--surface-color);
     margin: 20px;
-    padding: 20px;
+    padding: 16px;
     vertical-align: top;
     display: inline-block;
     max-width: 70vw;
     width: 30em;
-    border: 1px solid var(--font-color);
+    border: 1px solid var(--surface-border-color);
     border-radius: var(--small-border-radius);
     box-shadow: var(--m-shadow);
 }
 
 .popup > span {
-    background-color: var(--bg-highlight-color);
+    background-color: var(--surface-color);
     margin-left: 10px;
     float: right;
     font-size: 28px;

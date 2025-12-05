@@ -11,17 +11,17 @@
 }
 
 .modal-content {
-    background-color: var(--bg-highlight-color);
+    background-color: var(--surface-color);
     margin: 10% auto;
-    padding: 20px;
-    border: 1px solid var(--font-color);
+    padding: 16px;
+    border: 1px solid var(--surface-border-color);
     width: 75%;
     border-radius: var(--small-border-radius);
-    box-shadow: var(--xl-shadow);
+    box-shadow: var(--l-shadow);
 }
 
 .modal_close {
-    background-color: var(--bg-highlight-color);
+    background-color: var(--surface-color);
     float: right;
     font-size: 28px;
     font-weight: bold;

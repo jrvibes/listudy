@@ -1,11 +1,19 @@
     <header>
       <section class="container">
-        <nav role="navigation">
-          <div>
+        <nav class="site-nav" role="navigation" aria-label="<%= gettext "Primary navigation" %>">
+          <div class="nav-brand" aria-label="<%= gettext "Brand" %>">
+            <button id="hamburger" class="hamburger_container" type="button" aria-label="<%= gettext "Toggle navigation menu" %>" aria-expanded="false" aria-controls="mobile_menu">
+              <span class="burger1"></span>
+              <span class="burger2"></span>
+              <span class="burger3"></span>
+            </button>
+
             <div class="logo show">
               <a href="/<%= @assigns.locale %>"><span class="logo_name">listudy</span><span class="logo_domain">.org</span></a>
             </div>
-            
+          </div>
+
+          <div class="nav-primary" aria-label="<%= gettext "Primary links" %>">
             <div class="dropdowns_container">
               <div class="dropdown">
                 <button class="dropbtn"><%= gettext "Study" %></button>
@@ -16,7 +24,7 @@
                   <%= link (gettext "Search for Studies"), to: Routes.search_path(@conn, ListudyWeb.StudySearchLive, @assigns.locale) %>
                   <%= link (gettext "Create a new Study"), to: Routes.study_path(@conn, :new, @assigns.locale) %>
                 </div>
-              </div> 
+              </div>
             </div>
 
             <div class="dropdowns_container">
@@ -27,7 +35,7 @@
                   <%= link (gettext "Blind Tactics"), to: Routes.blind_tactic_path(@conn, :random, @assigns.locale) %>
                   <%= link (gettext "Pieceless Tactics"), to: Routes.pieceless_tactic_path(@conn, :random, @assigns.locale) %>
                 </div>
-              </div> 
+              </div>
             </div>
 
             <div class="dropdowns_container">
@@ -35,18 +43,11 @@
                 <a href="<%= Routes.endgame_path(@conn, :index, @assigns.locale) %>">
                   <button class="dropbtn dropdowns_single"><%= gettext "Endgames"%></button>
                 </a>
-              </div> 
+              </div>
             </div>
-
-            <div id="hamburger" class="hamburger_container">
-              <div class="burger1"></div>
-              <div class="burger2"></div>
-              <div class="burger3"></div>
-            </div> 
-
           </div>
 
-          <div class="nav_right">
+          <div class="nav-utility nav_right" aria-label="<%= gettext "User and settings" %>">
           <%= if !Pow.Plug.current_user(@conn) do %>
             <div class="nav_element">
               <%= link (gettext "Register"), to: Routes.pow_registration_path(@conn, :new) %>
@@ -61,7 +62,7 @@
                 <div class="dropdown-content">
                   <%= raw ListudyWeb.Seo.lang_alternatives(@conn) %>
                 </div>
-              </div> 
+              </div>
             </div>
             <div class="dropdowns_container">
               <div class="dropdown">
@@ -78,12 +79,72 @@
                   <%= link (gettext "Sign out"), to: Routes.pow_session_path(@conn, :delete), method: :delete, class: "hover_warn" %>
                 <% end %>
                 </div>
-              </div> 
+              </div>
             </div>
           </div>
         </nav>
       </section>
     </header>
+
+<div id="mobile_menu" class="mobile-menu" aria-hidden="true">
+  <div class="mobile-menu__backdrop" aria-hidden="true"></div>
+  <div class="mobile-menu__panel" role="dialog" aria-modal="true" aria-label="<%= gettext "Mobile navigation" %>">
+    <div class="mobile-menu__header">
+      <div class="logo">
+        <a href="/<%= @assigns.locale %>"><span class="logo_name">listudy</span><span class="logo_domain">.org</span></a>
+      </div>
+      <button id="mobile_menu_close" class="mobile-menu__close" type="button" aria-label="<%= gettext "Close navigation" %>">&times;</button>
+    </div>
+
+    <div class="mobile-menu__section" aria-label="<%= gettext "Explore" %>">
+      <p class="mobile-menu__label"><%= gettext "Explore" %></p>
+      <div class="mobile-menu__group">
+        <p class="mobile-menu__group-title"><%= gettext "Study" %></p>
+        <%= if Pow.Plug.current_user(@conn) do %>
+          <%= link (gettext "Your Studies"), to: Routes.study_path(@conn, :index, @assigns.locale), class: "mobile-menu__link" %>
+        <% end %>
+        <%= link (gettext "Search for Studies"), to: Routes.search_path(@conn, ListudyWeb.StudySearchLive, @assigns.locale), class: "mobile-menu__link" %>
+        <%= link (gettext "Create a new Study"), to: Routes.study_path(@conn, :new, @assigns.locale), class: "mobile-menu__link" %>
+      </div>
+
+      <div class="mobile-menu__group">
+        <p class="mobile-menu__group-title"><%= gettext "Tactics" %></p>
+        <%= link (gettext "Tactics"), to: Routes.tactic_path(@conn, :random, @assigns.locale), class: "mobile-menu__link" %>
+        <%= link (gettext "Blind Tactics"), to: Routes.blind_tactic_path(@conn, :random, @assigns.locale), class: "mobile-menu__link" %>
+        <%= link (gettext "Pieceless Tactics"), to: Routes.pieceless_tactic_path(@conn, :random, @assigns.locale), class: "mobile-menu__link" %>
+      </div>
+
+      <div class="mobile-menu__group">
+        <p class="mobile-menu__group-title"><%= gettext "Endgames" %></p>
+        <%= link (gettext "Training"), to: Routes.endgame_path(@conn, :index, @assigns.locale), class: "mobile-menu__link" %>
+      </div>
+    </div>
+
+    <div class="mobile-menu__section" aria-label="<%= gettext "Settings" %>">
+      <p class="mobile-menu__label"><%= gettext "Settings" %></p>
+      <a href="#" id="toggle_dark_mode" class="mobile-menu__link"><%= gettext "Toggle Darkmode" %></a>
+      <a href="#" class="mobile-menu__link modal_open" id="sound_settings"><%= gettext "Sound Settings" %></a>
+      <a href="#" class="mobile-menu__link modal_open" id="board_settings"><%= gettext "Board Settings" %></a>
+      <a href="<%= Routes.page_path(@conn, :show, @assigns.locale, "achievements") %>" class="mobile-menu__link"><%= gettext "Achievements" %></a>
+      <div class="mobile-menu__group">
+        <p class="mobile-menu__group-title"><%= gettext "Language" %></p>
+        <div class="mobile-menu__lang"> <%= raw ListudyWeb.Seo.lang_alternatives(@conn) %> </div>
+      </div>
+    </div>
+
+    <div class="mobile-menu__section" aria-label="<%= gettext "Account" %>">
+      <p class="mobile-menu__label"><%= gettext "Account" %></p>
+      <%= if Pow.Plug.current_user(@conn) do %>
+        <%= link (gettext "User Settings"), to: Routes.pow_registration_path(@conn, :edit), class: "mobile-menu__link" %>
+        <%= link (gettext "Profile"), to: Routes.user_profile_path(@conn, :show, @assigns.locale, @assigns.current_user.username), class: "mobile-menu__link" %>
+        <%= link (gettext "Sign out"), to: Routes.pow_session_path(@conn, :delete), method: :delete, class: "mobile-menu__link hover_warn" %>
+      <% else %>
+        <%= link (gettext "Register"), to: Routes.pow_registration_path(@conn, :new), class: "mobile-menu__link" %>
+        <%= link (gettext "Sign in"), to: Routes.pow_session_path(@conn, :new), class: "mobile-menu__link" %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <div id="board_settings_modal" class="modal">
   <div class="modal-content">

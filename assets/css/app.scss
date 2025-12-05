@@ -23,46 +23,167 @@ body {
 
 /* Alerts and form errors */
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
+    --alert-icon: "ℹ";
+
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    column-gap: 12px;
+    row-gap: 6px;
+    align-items: start;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    border: 1px solid var(--info-border);
+    border-radius: 12px;
+    background-color: var(--info-surface);
+    color: var(--info-strong);
+    box-shadow: var(--xs-shadow);
+    line-height: 1.5;
 }
-.alert-info {
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
+
+.alert::before {
+    content: var(--alert-icon);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.95rem;
+    line-height: 1;
 }
-.alert-warning {
-  color: #8a6d3b;
-  background-color: #fcf8e3;
-  border-color: #faebcc;
+
+.alert-title {
+    font-weight: 700;
+    font-size: 1rem;
+    margin: 0;
+    color: inherit;
 }
-.alert-danger {
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
-}
+
+.alert-body,
 .alert p {
-  margin-bottom: 0;
+    margin: 0;
+    color: var(--font-color);
 }
+
+.alert-body p {
+    margin: 0 0 6px 0;
+}
+
+.alert-body p:last-child {
+    margin-bottom: 0;
+}
+
 .alert:empty {
   display: none;
 }
 
+.alert-info {
+    --alert-icon: "ℹ";
+    background-color: var(--info-surface);
+    border-color: var(--info-border);
+    color: var(--info-strong);
+}
+
+.alert-warning {
+    --alert-icon: "⚠";
+    background-color: var(--warning-surface);
+    border-color: var(--warning-border);
+    color: var(--warning-strong);
+}
+
+.alert-danger {
+    --alert-icon: "!";
+    background-color: var(--danger-surface);
+    border-color: var(--danger-border);
+    color: var(--danger-strong);
+}
+
+.alert-success {
+    --alert-icon: "✔";
+    background-color: var(--success-surface);
+    border-color: var(--success-border);
+    color: var(--success-strong);
+}
+
+.success,
+.info,
+.error,
+.modal-content,
+.popup {
+    background-color: var(--surface-color);
+    border: 1px solid var(--surface-border-color);
+    border-radius: var(--small-border-radius);
+    box-shadow: var(--m-shadow);
+    padding: 16px;
+}
+
 .success {
-    color: var(--success-color);
-    background-color: var(--success-bg);
+    border-left: 4px solid var(--success-strong);
+    color: var(--success-strong);
 }
 
 .info {
-    color: var(--info-color);
-    background-color: var(--info-bg);
+    border-left: 4px solid var(--info-strong);
+    color: var(--info-strong);
 }
 
 .error {
-    color: var(--error-color);
-    background-color: var(--error-bg);
+    border-left: 4px solid var(--danger-strong);
+    color: var(--danger-strong);
+}
+
+.status-badge {
+    --badge-icon: "•";
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 0.85em;
+    font-weight: 700;
+    line-height: 1.3;
+    background-color: var(--surface-color);
+    border: 1px solid var(--surface-border-color);
+    box-shadow: var(--xs-shadow);
+    color: var(--font-color);
+}
+
+.status-badge::before {
+    content: var(--badge-icon);
+    font-size: 1.1em;
+    line-height: 1;
+    color: currentColor;
+}
+
+.status-badge--info {
+    --badge-icon: "•";
+    background-color: var(--info-surface);
+    border-color: var(--info-border);
+    color: var(--info-strong);
+}
+
+.status-badge--success {
+    --badge-icon: "•";
+    background-color: var(--success-surface);
+    border-color: var(--success-border);
+    color: var(--success-strong);
+}
+
+.status-badge--warning {
+    --badge-icon: "•";
+    background-color: var(--warning-surface);
+    border-color: var(--warning-border);
+    color: var(--warning-strong);
+}
+
+.status-badge--danger {
+    --badge-icon: "•";
+    background-color: var(--danger-surface);
+    border-color: var(--danger-border);
+    color: var(--danger-strong);
 }
 
 .infoBox {

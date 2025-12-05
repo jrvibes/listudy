@@ -1,40 +1,74 @@
 :root {
-    --primary-color: #0034FF;
-    --primary-font-offset: white;
-    --secondary-color: #536390;
-    --font-color: #424242;
-    --font-highlight-color: #5e5e5e;
-    --bg-color: #fff;
-    --bg-highlight-color: #eee;
-    --heading-color: #292922;
-    --drop-shadow-color: rgba(0,0,0,0.2);
-    --warn-color: #ec1e1e;
+    /* Neutral palette: use bg/surface for page shells, border for dividers, and font colors for readable text. */
+    --bg-color: #f7f8fc;
+    --bg-highlight-color: #eef1f7;
+    --surface-color: #ffffff;
+    --surface-muted-color: #f0f2f7;
+    --border-color: #d7dbe7;
+    --border-strong-color: #b6bed2;
+    --font-color: #1f2937;
+    --font-highlight-color: #374151;
+    --heading-color: #111827;
+    --drop-shadow-color: rgba(0, 0, 0, 0.18);
 
-    --success-bg: #DFF2BF;
-    --info-bg: #BDE5F8;
-    --error-bg: #FFBABA;
-    --success-color: #4F8A10;
-    --info-color: #00529B;
-    --error-color: #D8000C;
+    /* Accent palette: primary for main CTAs/links, secondary for supporting emphasis. */
+    --primary-color: #2563eb;
+    --secondary-color: #9b51e0;
+    --primary-font-offset: #ffffff;
+
+    /* Semantic states: use for status banners, outlines, and inline feedback. */
+    --success-bg: #e6f4ed;
+    --success-border: #b7e2c7;
+    --success-color: #1f7a4d;
+
+    --info-bg: #e6f0ff;
+    --info-border: #bed0fa;
+    --info-color: #0f4aa3;
+
+    --warning-bg: #fff3e0;
+    --warning-border: #ffd8a8;
+    --warning-color: #9a4b16;
+
+    --error-bg: #fde4e4;
+    --error-border: #f5b8b1;
+    --error-color: #b42318;
+
+    /* Legacy naming retained for compatibility. */
+    --warn-color: var(--warning-color);
 }
 
 [data-theme="dark"] {
-    --primary-color: #0034FF;
-    --primary-font-offset: white;
-    --secondary-color: #818cab;
-    --font-color: #e1e1ff;
-    --font-highlight-color: #fdfdff;
-    --bg-color: #161625;
-    --bg-highlight-color: #30303e;
-    --heading-color: #818cab;
-    --drop-shadow-color: rgba(170,170,170,0.2);
-    --warn-color: #ec1e1e;
+    /* Neutral palette for dark surfaces. */
+    --bg-color: #0f1629;
+    --bg-highlight-color: #1a233b;
+    --surface-color: #161f35;
+    --surface-muted-color: #1d2744;
+    --border-color: #253356;
+    --border-strong-color: #2f4267;
+    --font-color: #e5e7eb;
+    --font-highlight-color: #f9fafb;
+    --heading-color: #f3f4f6;
+    --drop-shadow-color: rgba(170, 170, 170, 0.2);
 
-    --success-bg: #DFF2BF;
-    --info-bg: #BDE5F8;
-    --error-bg: #FFBABA;
-    --success-color: #4F8A10;
-    --info-color: #00529B;
-    --error-color: #D8000C;
+    /* Accent palette maintains contrast on dark backgrounds. */
+    --primary-color: #3b82f6;
+    --secondary-color: #b78bff;
+    --primary-font-offset: #0b1020;
 
+    /* Semantic states tuned for dark mode legibility. */
+    --success-bg: #0f231b;
+    --success-border: #1f4d38;
+    --success-color: #7dd3af;
+
+    --info-bg: #101e36;
+    --info-border: #1f3f6e;
+    --info-color: #93c5fd;
+
+    --warning-bg: #251a0f;
+    --warning-border: #6b4814;
+    --warning-color: #facc15;
+
+    --error-bg: #2a1313;
+    --error-border: #5c2020;
+    --error-color: #fca5a5;
 }
